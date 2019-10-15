@@ -4,7 +4,9 @@
   "description": "1. [Prerequisites](#prerequisites)\r 2. [Creating project](#creating-project)\r 3. [Modules installation and configuration](#modules)\r 4. [Updating WebDriver I/O configuration](#wdio-configuration)\r 5. [Modifying test script](#test-scripts)\r 6. [Creating the first test](#first-test)\r 7. [Installation of `Babel` to use JavaScript ES6 syntax](#babel)\r 8. [Running the first test](#first-test-run)\r 9. [Adding more tests](#more-tests)\r 10. [Configuring Allure reporter](#allure)\r 11. [Installation of `chai` module](#chai)\r 12. [Adding Smoke suite](#smoke)\r 13. [Working with Git](#git)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run clean && wdio wdio.conf.js && npm run report",
+    "report": "allure generate --clean && allure open",
+    "clean": "rm -rf allure-results"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,12 @@
   },
   "homepage": "https://github.com/IrinaWilliams/floqast#readme",
   "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
     "@wdio/cli": "^5.15.0",
+    "chai": "^4.2.0",
     "webdriverio": "^5.15.0"
   },
   "devDependencies": {
