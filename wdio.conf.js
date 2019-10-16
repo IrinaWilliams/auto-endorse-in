@@ -2,7 +2,7 @@ exports.config = {
     
     runner: 'local',
     specs: [
-        './test/specs/**/*.js'
+        './specs/test.js'
     ],
     exclude: [
     ],
@@ -161,4 +161,4 @@ exports.config = {
     */
     //onReload: function(oldSessionId, newSessionId) {
     //}
-}
+};
