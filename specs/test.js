@@ -1,7 +1,9 @@
+import help from '../helpers/help.linkedin';
 import fs from 'fs';
+
 const sel = {
-    plusIcon: '//li-icon[@type="plus-icon"]/../../button',
-    showMore: '//button[@data-control-name="skill_details"]',
+    plusIcon: 'li-icon[type*=plus-icon]',
+    showMore: 'button[data-control-name=skill_details]',
     endorseLevel: '//span[text()="Highly skilled"]',
     relationDropDown: '//select[@class="pv-endorsement-followup__select mb3"]',
     submitButton: '//span[text()="Submit"]',
@@ -13,13 +15,16 @@ const sel = {
     h1: '//h1',
     scrollTo3: '//ul[@id="highlights-container"]',
 };
+
 const filePath = 'linkedinData.txt';
+
 const data = {
     urlMain: 'https://www.linkedin.com/',
     profileURLs: fs.readFileSync(filePath).toString().split('\n'),
-    userEmail: 'ira6170724@gmail.com', // enter your own email
-    userPass: 'Elizarov1409', // enter your own password
-};
+    userEmail: help.eml, // enter your own email
+    userPass: help.passw, // enter your own password
+}
+
 describe("Auto endorse tool", () => {
     before(() => {
         browser.url(data.urlMain);
@@ -32,6 +37,7 @@ describe("Auto endorse tool", () => {
             return $(sel.h1).isDisplayed(5000);
         });
     });
+
     data.profileURLs.map(userLink => {
         it('redirect to user profile', () => {
             browser.url(userLink);
@@ -39,6 +45,7 @@ describe("Auto endorse tool", () => {
                 return $(sel.h1).isDisplayed(5000);
             });
         });
+
         it('go to user profile', () => {
             $(sel.scrollTo).waitForExist(5000);
             $(sel.scrollTo).scrollIntoView({behavior: "smooth", block: "end"});
@@ -48,6 +55,7 @@ describe("Auto endorse tool", () => {
             $(sel.scrollTo2).scrollIntoView({behavior: "smooth", block: "start"});
             $(sel.showMore).click();
         });
+
         it('endorse user skills', () => {
             const allSkills = $$(sel.plusIcon);
             allSkills.forEach(element => {

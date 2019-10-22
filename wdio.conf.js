@@ -33,7 +33,16 @@ exports.config = {
   
     framework: 'mocha',
    
-    reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
+    reporters: ['dot','spec',
+        ['allure', {
+           outputDir: 'allure-results',
+           disableWebdriverStepsReporting: true
+        }],
+        // ['junit', {
+        //     outputDir: './'
+        // }],
+    ],
+
  
     mochaOpts: {
         ui: 'bdd',
@@ -105,13 +114,11 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    afterTest: function(test, context, { error, result, duration, passed }) {
-        if (!passed) {
+    afterTest: function(test) {
+        if (test.error !== undefined) {
             browser.takeScreenshot();
         }
     },
-
-
     /**
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
