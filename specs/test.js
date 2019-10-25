@@ -4,7 +4,7 @@ import fs from 'fs';
 const sel = {
     plusIcon: 'li-icon[type*=plus-icon]',
     showMore: 'button[data-control-name=skill_details]',
-    endorseLevel: '//span[text()="Highly skilled"]',
+    endorseLevel: '(.pv-endorsement-followup__radio-label-text)[2]',
     relationDropDown: '//select[@class="pv-endorsement-followup__select mb3"]',
     submitButton: '//span[text()="Submit"]',
     loginEmail: '//input[@name="session_key"]',
