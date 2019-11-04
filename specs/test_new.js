@@ -1,4 +1,3 @@
-import help from '../helpers/help.linkedin';
 import fs from 'fs';
 
 const sel = {
@@ -22,8 +21,8 @@ const filePath = 'linkedinData.txt';
 const data = {
     urlMain: 'https://www.linkedin.com/',
     profileURLs: fs.readFileSync(filePath).toString().split('\n'),
-    userEmail: help.eml, // enter your own email
-    userPass: help.passw, // enter your own password
+    userEmail: 'Irina Williams', // enter your own email
+    userPass: '', // enter your own password
 };
 describe("Auto endorse tool", () => {
     before(() => {

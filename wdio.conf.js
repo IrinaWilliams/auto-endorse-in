@@ -2,7 +2,7 @@ exports.config = {
     
     runner: 'local',
     specs: [
-        './specs/test.js'
+        './specs/sweetgreen.js'
     ],
     exclude: [
     ],
@@ -33,14 +33,12 @@ exports.config = {
   
     framework: 'mocha',
    
-    reporters: ['dot','spec',
-        ['allure', {
-           outputDir: 'allure-results',
-           disableWebdriverStepsReporting: true
-        }],
-        // ['junit', {
-        //     outputDir: './'
-        // }],
+    reporters: ['spec',
+    ['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+    }]
     ],
 
  
